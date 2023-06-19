@@ -65,6 +65,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (copy, nonatomic, readonly, null_unspecified) id<JSQMessageMediaData> media;
 
+/**
+ -- Aivars -- returns string identifier for message type. Added for sticker handling
+*/
+@property (copy, nonatomic, readonly) NSString *messageType;
 
 #pragma mark - Initialization
 
@@ -132,6 +136,15 @@ NS_ASSUME_NONNULL_BEGIN
                senderDisplayName:(NSString *)senderDisplayName
                             date:(NSDate *)date
                            media:(id<JSQMessageMediaData>)media;
+
+/**
+ * Aditional method for sticker handling
+ */
+- (instancetype)initStickerWithSenderId:(NSString *)senderId
+               senderDisplayName:(NSString *)senderDisplayName
+                            date:(NSDate *)date
+                           media:(id<JSQMessageMediaData>)media
+                     messageType:(NSString *)messageType;
 
 /**
  *  Not a valid initializer.

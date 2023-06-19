@@ -827,13 +827,21 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
                                                   object:nil];
 
     UIMenuController *menu = [notification object];
-    [menu setMenuVisible:NO animated:NO];
+    if (@available(iOS 13, *)) {
+        [menu hideMenu];
+    } else {
+        [menu setMenuVisible:NO animated:NO];
+    }
 
     JSQMessagesCollectionViewCell *selectedCell = (JSQMessagesCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:self.selectedIndexPathForMenu];
     CGRect selectedCellMessageBubbleFrame = [selectedCell convertRect:selectedCell.messageBubbleContainerView.frame toView:self.view];
 
-    [menu setTargetRect:selectedCellMessageBubbleFrame inView:self.view];
-    [menu setMenuVisible:YES animated:YES];
+    if (@available(iOS 13, *)) {
+        [menu showMenuFromView:self.view rect:selectedCellMessageBubbleFrame];
+    } else {
+        [menu setTargetRect:selectedCellMessageBubbleFrame inView:self.view];
+        [menu setMenuVisible:YES animated:YES];
+    }
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didReceiveMenuWillShowNotification:)
