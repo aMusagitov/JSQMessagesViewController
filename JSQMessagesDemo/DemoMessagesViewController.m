@@ -40,7 +40,7 @@
     [super viewDidLoad];
     
     self.title = @"JSQMessages";
-
+    
     self.inputToolbar.contentView.textView.pasteDelegate = self;
     
     /**
@@ -48,12 +48,12 @@
      */
     self.demoData = [[DemoModelData alloc] init];
     
-
+    
     /**
      *  Set up message accessory button delegate and configuration
      */
     self.collectionView.accessoryDelegate = self;
-
+    
     /**
      *  You can set custom avatar sizes
      */
@@ -71,25 +71,25 @@
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:self
                                                                              action:@selector(receiveMessagePressed:)];
-
+    
     /**
      *  Register custom menu actions for cells.
      */
     [JSQMessagesCollectionViewCell registerMenuAction:@selector(customAction:)];
-
-	
+    
+    
     /**
      *  OPT-IN: allow cells to be deleted
      */
     [JSQMessagesCollectionViewCell registerMenuAction:@selector(delete:)];
-
+    
     /**
      *  Customize your toolbar buttons
      *
      *  self.inputToolbar.contentView.leftBarButtonItem = custom button or nil to remove
      *  self.inputToolbar.contentView.rightBarButtonItem = custom button or nil to remove
      */
-
+    
     /**
      *  Set a maximum height for the input toolbar
      *
@@ -273,9 +273,9 @@
          *  2. Add new id<JSQMessageData> object to your data source
          *  3. Call `finishReceivingMessage`
          */
-
+        
         // [JSQSystemSoundPlayer jsq_playMessageReceivedSound];
-
+        
         [self.demoData.messages addObject:newMessage];
         [self finishReceivingMessageAnimated:YES];
         
@@ -344,7 +344,7 @@
      *  2. Add new id<JSQMessageData> object to your data source
      *  3. Call `finishSendingMessage`
      */
-
+    
     // [JSQSystemSoundPlayer jsq_playMessageSentSound];
     
     JSQMessage *message = [[JSQMessage alloc] initWithSenderId:senderId
@@ -360,7 +360,7 @@
 - (void)didPressAccessoryButton:(UIButton *)sender
 {
     [self.inputToolbar.contentView.textView resignFirstResponder];
-
+    
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Media messages", nil)
                                                        delegate:self
                                               cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
@@ -576,7 +576,7 @@
         cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
                                               NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };
     }
-
+    
     cell.accessoryButton.hidden = ![self shouldShowAccessoryButtonForMessage:msg];
     
     return cell;
@@ -597,7 +597,7 @@
     if (action == @selector(customAction:)) {
         return YES;
     }
-
+    
     return [super collectionView:collectionView canPerformAction:action forItemAtIndexPath:indexPath withSender:sender];
 }
 
@@ -607,14 +607,14 @@
         [self customAction:sender];
         return;
     }
-
+    
     [super collectionView:collectionView performAction:action forItemAtIndexPath:indexPath withSender:sender];
 }
 
 - (void)customAction:(id)sender
 {
     NSLog(@"Custom action received! Sender: %@", sender);
-
+    
     [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Custom Action", nil)
                                 message:nil
                                delegate:nil

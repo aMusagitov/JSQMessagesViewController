@@ -665,11 +665,8 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
 {
-    if (action == @selector(copy:) || action == @selector(delete:)) {
-        return YES;
-    }
-
-    return NO;
+    [UIMenuController sharedMenuController].menuItems = nil;
+    return [super canPerformAction:action withSender:sender];
 }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
