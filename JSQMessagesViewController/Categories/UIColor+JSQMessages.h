@@ -44,6 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (UIColor *)jsq_messageBubbleLightGrayColor;
 
++ (UIColor *)jsq_antiRedColor;
+
 #pragma mark - Utilities
 
 /**

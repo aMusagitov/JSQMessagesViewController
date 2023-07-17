@@ -54,6 +54,14 @@
                            alpha:1.0f];
 }
 
++ (UIColor *)jsq_antiRedColor
+{
+    return [UIColor colorWithHue:4.0f / 360.0f
+                      saturation:0.48f
+                      brightness:0.94f
+                           alpha:1.0f];
+}
+
 #pragma mark - Utilities
 
 - (UIColor *)jsq_colorByDarkeningColorWithValue:(CGFloat)value
