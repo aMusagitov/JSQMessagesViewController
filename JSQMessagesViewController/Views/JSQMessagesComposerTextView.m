@@ -21,6 +21,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "NSString+JSQMessages.h"
+#import "UIColor+JSQMessages.h"
 
 @interface JSQMessagesComposerTextView ()
 
@@ -40,9 +41,9 @@
 
     CGFloat cornerRadius = 6.0f;
 
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor blackColor];
     self.layer.borderWidth = 0.5f;
-    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.layer.borderColor = [UIColor jsq_antiRedColor].CGColor;
     self.layer.cornerRadius = cornerRadius;
 
     self.scrollIndicatorInsets = UIEdgeInsetsMake(cornerRadius, 0.0f, cornerRadius, 0.0f);
@@ -55,12 +56,12 @@
     self.userInteractionEnabled = YES;
 
     self.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.textColor = [UIColor blackColor];
+    self.textColor = [UIColor whiteColor];
     self.textAlignment = NSTextAlignmentNatural;
 
     self.contentMode = UIViewContentModeRedraw;
     self.dataDetectorTypes = UIDataDetectorTypeNone;
-    self.keyboardAppearance = UIKeyboardAppearanceDefault;
+    self.keyboardAppearance = UIKeyboardAppearanceDark;
     self.keyboardType = UIKeyboardTypeDefault;
     self.returnKeyType = UIReturnKeyDefault;
 
