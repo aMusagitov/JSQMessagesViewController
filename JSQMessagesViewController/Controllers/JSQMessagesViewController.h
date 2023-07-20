@@ -304,6 +304,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)didReceiveMenuWillHideNotification:(NSNotification *)notification;
 
+- (void)collectionView:(JSQMessagesCollectionView *)collectionView
+  accessibilityForCell:(JSQMessagesCollectionViewCell*)cell
+             indexPath:(NSIndexPath *)indexPath
+               message:(id<JSQMessageData>)messageItem;
+
 @end
 
 NS_ASSUME_NONNULL_END
